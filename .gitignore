@@ -5,3 +5,8 @@
 /src/.umi
 /src/.umi-production
 /dist
+.vscode/
+.env
+
+api/
+!src/api/
