@@ -7,13 +7,13 @@ h2 {
 }
 
 #post-content a {
-  color: rgba(0, 255, 255, 0.9);
-}
-
-#post-content a:hover {
   color: rgba(0, 255, 255, 0.7);
 }
 
+#post-content a:hover {
+  color: rgba(0, 255, 255, 0.85);
+}
+
 #post-content a:visited {
-  color: rgba(0, 255, 255, 0.5);
+  color: rgba(0, 255, 255, 0.55);
 }
