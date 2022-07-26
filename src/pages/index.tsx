@@ -18,7 +18,9 @@ export default function HomePage() {
         console.error(await res.text());
       }
       const postsJson = await res.json();
-      setPosts(postsJson.posts);
+      const posts = postsJson.posts;
+      posts.reverse();
+      setPosts(posts);
       setTotalPages(postsJson.pagesTotal);
     } catch (err) {
       console.error(err);
