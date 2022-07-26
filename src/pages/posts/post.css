@@ -1,0 +1,19 @@
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+#post-content a {
+  color: rgba(0, 255, 255, 0.9);
+}
+
+#post-content a:hover {
+  color: rgba(0, 255, 255, 0.7);
+}
+
+#post-content a:visited {
+  color: rgba(0, 255, 255, 0.5);
+}

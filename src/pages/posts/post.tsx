@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { marked } from "marked";
 import { useParams } from "umi";
+import "./post.css";
 
 export default function Page() {
   const params = useParams();
@@ -50,7 +51,7 @@ export default function Page() {
               </div>
             </div>
             <div className="w-full flex justify-center my-6">
-              <div className="w-full container">
+              <div className="w-full container" id="post-content">
                 {post.imageUrl !== null && (
                   <img
                     src={post.imageUrl}
