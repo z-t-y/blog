@@ -6,17 +6,22 @@ export default async function (req: UmiApiRequest, res: UmiApiResponse) {
   switch (req.method) {
     case "GET": {
       const prisma = new PrismaClient();
-      const allPosts = prisma.post.findMany();
-      res.status(200).json(allPosts);
+      const allPosts = await prisma.post.findMany();
+      const page = req.query.page ? +req.query.page : 1;
+      const perPage = 6;
+      res.status(200).json({
+        posts: allPosts.slice((page - 1) * perPage, page * perPage),
+        pagesTotal: Math.ceil(allPosts.length / 6),
+      });
       await prisma.$disconnect();
       break;
     }
     case "POST": {
-      if (!req.cookies?.token) {
+      if (!req.headers.authorization) {
         return res.status(401).json({ message: "Unauthorized" });
       }
       const author = verify(
-        req.cookies.token,
+        req.headers.authorization,
         process.env.SECRET_KEY!
       ) as JwtPayload;
       const authorId = author.id;

@@ -7,6 +7,7 @@
 /dist
 .vscode/
 .env
+.eslintcache
 
 api/
 !src/api/

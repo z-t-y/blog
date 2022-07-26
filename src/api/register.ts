@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
-import { sign } from "jsonwebtoken";
 import type { UmiApiRequest, UmiApiResponse } from "umi";
 
 export default async function (req: UmiApiRequest, res: UmiApiResponse) {
@@ -19,10 +18,7 @@ export default async function (req: UmiApiRequest, res: UmiApiResponse) {
       },
     });
 
-    res
-      .status(201)
-      .setCookie("token", sign({ id: user.id }, process.env.SECRET_KEY!))
-      .json({ ...user, passwordHash: undefined });
+    res.status(201).json({ ...user, passwordHash: undefined });
 
     await prisma.$disconnect();
   } catch (e: any) {

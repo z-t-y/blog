@@ -13,8 +13,10 @@ export default async function (req: UmiApiRequest, res: UmiApiResponse) {
     });
     if (user === null) {
       res.status(404).json({ message: "User not found" });
+    } else if (user.email !== process.env.ADMIN_EMAIL) {
+      res.status(401).json({ message: "You cannot login!" });
     } else if (!bcrypt.compareSync(req.body.password, user.passwordHash)) {
-      res.status(401).json({ message: "Authorization failed"});
+      res.status(401).json({ message: "Authorization failed" });
     } else {
       res.status(200).json({
         token: sign({ id: user.id }, process.env.SECRET_KEY!),
