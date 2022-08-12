@@ -1,0 +1,31 @@
+p {
+  text-indent: 2em;
+}
+
+div ul {
+  margin-left: 2em;
+}
+
+ul li::before {
+  content: "\2022";
+  color: #d0d8e0;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em; /* Also needed for space (tweak if needed) */
+}
+
+li ul {
+  margin-left: 1em;
+}
+
+#content a {
+  color: #099;
+}
+
+#content a:hover {
+  color: #0bb;
+}
+
+#content a:visited {
+  color: #077;
+}

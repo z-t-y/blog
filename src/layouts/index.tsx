@@ -24,6 +24,18 @@ function Header() {
           </div>
         </a>
       </div>
+      <div className="inline-flex">
+        {[
+          ["/", "博客"],
+          ["/about", "关于"],
+        ].map((l, i) => {
+          return (
+            <div key={i} className="font-semibold mt-2 text-2xl ml-6">
+              <a href={l[0]}>{l[1]}</a>
+            </div>
+          );
+        })}
+      </div>
     </header>
   );
 }
@@ -56,13 +68,14 @@ function Footer() {
         <div>Andy&apos;s Blog</div>
       </div>
       <div className="flex flex-nowrap items-center justify-center">
-        Built with umi.js and tailwind
+        使用umi.js 和 tailwind 构建
       </div>
     </footer>
   );
 }
 
 export default function Layout() {
+  document.title = "Andy's Blog";
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <Header />

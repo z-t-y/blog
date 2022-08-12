@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "umi";
 
 export default function HomePage() {
+  document.title = "所有文章 | Andy";
   const [posts, setPosts] = useState<any[]>();
   const [totalPages, setTotalPages] = useState<number>();
 
@@ -32,14 +33,10 @@ export default function HomePage() {
   return (
     <>
       <div className="pb-4 border-b-2 border-slate-300">
-        <h1 className="text-5xl font-bold">All Posts</h1>
+        <h1 className="text-5xl font-bold">所有文章</h1>
       </div>
       <div className="flex flex-row w-full flex-wrap">
-        {!posts && (
-          <div className="fixed w-screen h-screen flex justify-center items-center">
-            <p className="animate-pulse">Loading...</p>
-          </div>
-        )}
+        {!posts && <p className="animate-pulse">加载中...</p>}
         {posts && (
           <div className="flex flex-row w-full flex-wrap p-4">
             {posts.map((post) => (
@@ -63,16 +60,16 @@ export default function HomePage() {
           </div>
         )}
       </div>
-      <div className="flex justify-between w-full text-slate-500 uppercase pr-4">
+      <div className="flex justify-between w-full text-slate-500 pr-4">
         <div
-          className="w-6 cursor-pointer"
+          className="w-12 cursor-pointer"
           onClick={() => {
             setPosts([]);
             setSearchParams({ page: `${page - 1}` });
             refresh(page - 1);
           }}
         >
-          {page > 1 && "Previous"}
+          {page > 1 && "前一页"}
         </div>
         <div className="flex flex-nowrap space-x-2">
           <div>{page}</div>
@@ -80,14 +77,14 @@ export default function HomePage() {
           <div>{totalPages}</div>
         </div>
         <div
-          className="w-6 cursor-pointer"
+          className="w-12 cursor-pointer"
           onClick={() => {
             setPosts([]);
             setSearchParams({ page: `${page + 1}` });
             refresh(page + 1);
           }}
         >
-          {page !== totalPages && "Next"}
+          {page !== totalPages && "后一页"}
         </div>
       </div>
     </>
