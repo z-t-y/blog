@@ -9,7 +9,9 @@ export default function About() {
         <h1 className="text-5xl font-bold">关于</h1>
       </div>
       <div className="w-full p-4" id="content">
-        <p>我是周天佑，英文名 Andy Zhou，一个即将进入高中的魔都学生。</p>
+        <p>
+          我是周天佑，英文名 Andy Zhou，一个即将进入杨浦高级中学的魔都学生。
+        </p>
         <p>
           我热爱编程与开源事业，在中大型项目（&ge;1000行）使用过的编程语言及框架/库如下：
         </p>
